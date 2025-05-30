@@ -1,9 +1,10 @@
 {
   "required": true,
-  "package": "com.example.mixin",
+  "package": "de.rhm176.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "GameManagerMixin"
+    "MenuPanelGuiMixin",
+    "TextureManagerAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

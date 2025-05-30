@@ -1,29 +1,31 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "mod-menu",
   "version": "${version}",
-  "name": "Example mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Mod Menu",
+  "description": "Adds a mod menu to view the list of mods you have installed.",
   "authors": [
-    "Me!"
+    "Right Hand Man"
   ],
-  "license": "CC0-1.0",
-  "icon": "icon.png",
+  "contact": {
+    "homepage": "https://rhm176.de/",
+    "sources": "https://github.com/Raik176/equilinox-mod-menu",
+    "issues": "https://github.com/Raik176/equilinox-mod-menu/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/mod-menu/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.example.ExampleMod"
+      "de.rhm176.ModMenu"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "mod-menu.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.16.10",
     "equilinox": "~1.7.2",
     "java": ">=17"
-  },
-  "suggests": {
-    "another-mod": "*"
   }
 }

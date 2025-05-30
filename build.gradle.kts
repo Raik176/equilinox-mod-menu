@@ -1,6 +1,7 @@
 plugins {
-    id("de.rhm176.silk") version "v1.0.4"
+    id("de.rhm176.silk") version "1.2.1"
     id("maven-publish")
+    id("com.diffplug.spotless") version "7.0.3"
 }
 
 group = project.property("maven_group")!!
@@ -10,23 +11,19 @@ base {
     archivesName.set(project.property("archives_base_name").toString())
 }
 
-repositories {
-    // Add repositories to retrieve artifacts from in here.
-    // You should only use this when depending on other mods because
-    // Silk adds the essential maven repositories to download silk loader and libraries from automatically.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-    // for more information about repositories.
-}
-
-// Optionally configure the silk plugin
-silk {
-    // runDir.set(project.file("game"))
-}
-
 dependencies {
     equilinox(files(silk.findEquilinoxGameJar()))
 
     implementation("com.github.SilkLoader:silk-loader:${project.property("loader_version")}")
+}
+
+spotless {
+    java {
+        importOrder()
+        removeUnusedImports()
+
+        palantirJavaFormat("2.66.0")
+    }
 }
 
 tasks.processResources {
@@ -57,25 +54,5 @@ tasks.jar {
 
     from("LICENSE") {
         rename { "${it}_${inputs.properties["archivesName"]}" }
-    }
-}
-
-// configure the maven publication
-publishing {
-    publications {
-        create<MavenPublication>("mavenJava") {
-            artifactId = project.property("archives_base_name").toString()
-
-            from(components["java"])
-        }
-    }
-
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information
-    // on how to set up publishing.
-    repositories {
-        // Add repositories to publish to here.
-        // Notice: This block does NOT have the same function as the block in the top level.
-        // The repositories here will be used for publishing your artifact, not for
-        // retrieving dependencies.
     }
 }
