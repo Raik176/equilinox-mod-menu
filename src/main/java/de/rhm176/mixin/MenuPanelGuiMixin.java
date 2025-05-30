@@ -1,12 +1,9 @@
 package de.rhm176.mixin;
 
 import de.rhm176.ui.ModMenuGui;
-import gameMenu.CreditsGui;
 import gameMenu.DnaButtonGui;
 import gameMenu.GameMenuGui;
 import gameMenu.MenuPanelGui;
-import java.util.List;
-
 import guis.GuiComponent;
 import guis.GuiTexture;
 import org.spongepowered.asm.mixin.Debug;

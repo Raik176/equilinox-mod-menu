@@ -103,11 +103,9 @@ public class ModMenuUtil {
                 return scaledBuffer;
             }
         } catch (IOException e) {
-            ModMenu.LOGGER.warn(
-                    "Could not load png {} for mod: {}",
-                    file,
-                    container.getMetadata().getId(),
-                    e);
+            System.out.println("Could not load png " + file + " for mod: "
+                    + container.getMetadata().getId());
+            e.printStackTrace(System.out);
             return null;
         }
     }

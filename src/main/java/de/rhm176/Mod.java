@@ -1,18 +1,13 @@
 package de.rhm176;
 
-import com.google.common.collect.Sets;
 import java.nio.ByteBuffer;
 import java.util.*;
 import net.fabricmc.loader.api.ModContainer;
 import net.fabricmc.loader.api.metadata.CustomValue;
 import net.fabricmc.loader.api.metadata.ModMetadata;
 import net.fabricmc.loader.api.metadata.Person;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public final class Mod {
-    private static final Logger LOGGER = LoggerFactory.getLogger("Mod Menu | Mod");
-
     private final ModContainer container;
     private final ModMetadata metadata;
 
@@ -42,7 +37,8 @@ public final class Mod {
                             throw new RuntimeException("Mod declared itself as its own parent");
                         }
                     } catch (Throwable t) {
-                        LOGGER.error("Error loading parent data from mod: {}", id, t);
+                        System.err.println("Error loading parent data from mod: " + id);
+                        t.printStackTrace(System.err);
                     }
                 }
             }
@@ -137,7 +133,7 @@ public final class Mod {
     }
 
     public Set<String> getLicenses() {
-        return Sets.newHashSet(metadata.getLicense());
+        return new HashSet<>(metadata.getLicense());
     }
 
     public String getWebsite() {

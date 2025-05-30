@@ -1,6 +1,5 @@
 package de.rhm176.ui;
 
-import com.google.common.base.Joiner;
 import fontRendering.Text;
 import java.awt.*;
 import java.io.IOException;
@@ -56,10 +55,14 @@ public class ModMenuModInfoUi extends GuiPanel {
         List<String> names = elem.getMod().getAuthors();
         float currentY = version.getRelativeY() + getRelativeHeightCoords(version.getHeight());
         if (!names.isEmpty()) {
-            Text authors = Text.newText("By: "
-                            + (names.size() == 1
-                                    ? names.get(0)
-                                    : Joiner.on(", ").join(names)))
+            String authorString;
+            if (names.size() == 1) {
+                authorString = names.get(0);
+            } else {
+                authorString = String.join(", ", names);
+            }
+
+            Text authors = Text.newText("By: " + authorString)
                     .setFontSize(UiSettings.NORM_FONT)
                     .create();
             authors.setColour(ColourPalette.LIGHT_GREY);
