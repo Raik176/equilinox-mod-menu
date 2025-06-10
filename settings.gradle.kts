@@ -1,4 +1,4 @@
-rootProject.name = "equilinox-mod-menu"
+rootProject.name = "modmenu"
 
 pluginManagement {
     repositories {

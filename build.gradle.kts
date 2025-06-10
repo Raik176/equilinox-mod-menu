@@ -97,15 +97,12 @@ tasks.processResources {
 }
 
 java {
-    val javaLanguageVersion = JavaLanguageVersion.of(rootProject.findProperty("javaVersion").toString())
-    val javaVersion = JavaVersion.toVersion(javaLanguageVersion.asInt())
-
-    toolchain {
-        languageVersion = javaLanguageVersion
-    }
+    val javaVersion = JavaVersion.toVersion(rootProject.findProperty("javaVersion").toString())
 
     sourceCompatibility = javaVersion
     targetCompatibility = javaVersion
+
+    withSourcesJar()
 }
 
 tasks.jar {
@@ -113,5 +110,69 @@ tasks.jar {
 
     from("LICENSE") {
         rename { "${it}_${inputs.properties["archivesName"]}" }
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+
+            pom {
+                name = silk.fabric.name
+                description = silk.fabric.description
+                url = silk.fabric.contact.map { it["sources"] }
+
+                licenses {
+                    license {
+                        name = silk.fabric.licenses.map { it[0] }
+                        url = silk.fabric.contact.map { it["sources"]!!.removeSuffix("/") + "/blob/main/LICENSE" }
+                    }
+                }
+
+                developers {
+                    // this .get should be fine
+                    silk.fabric.authors.get().forEach { authorPerson ->
+                        developer {
+                            this.name = authorPerson.name
+                        }
+                    }
+                }
+
+                scm {
+                    connection = silk.fabric.contact.map { "scm:git:${it["sources"]}.git" }
+                    val repoPath = silk.fabric.contact.map { it["sources"]!!.substringAfter("https://github.com/")}
+                    developerConnection = repoPath.map { "scm:git:git@github.com:$it.git" }
+                    this.url = silk.fabric.contact.map { it["sources"] }
+                }
+            }
+        }
+    }
+
+    repositories {
+        val reposiliteBaseUrl = System.getenv("REPOSILITE_URL")
+            ?: project.findProperty("reposiliteUrl") as String?
+
+        if (!reposiliteBaseUrl.isNullOrBlank()) {
+            maven {
+                name = "Reposilite"
+
+                val repoPath = if (project.version.toString().endsWith("-SNAPSHOT")) {
+                    "/snapshots"
+                } else {
+                    "/releases"
+                }
+                url = uri("$reposiliteBaseUrl$repoPath")
+
+                credentials(PasswordCredentials::class.java) {
+                    username = System.getenv("REPOSILITE_USERNAME") ?: project.findProperty("reposiliteUsername") as String?
+                    password = System.getenv("REPOSILITE_PASSWORD") ?: project.findProperty("reposilitePassword") as String?
+                }
+
+                authentication {
+                    create<BasicAuthentication>("basic")
+                }
+            }
+        }
     }
 }
