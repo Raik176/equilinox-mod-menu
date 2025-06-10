@@ -4,7 +4,7 @@ plugins {
     id("com.diffplug.spotless") version "7.0.3"
 }
 
-group = "de.rhm176"
+group = project.property("maven_group")!!
 version = project.property("mod_version")!!
 
 base {
