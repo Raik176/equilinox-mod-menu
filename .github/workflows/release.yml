@@ -63,6 +63,10 @@ jobs:
       - name: Build Mod Menu
         id: build_modmenu
         run: ./gradlew build --stacktrace
+        env:
+          REPOSILITE_URL: ${{ secrets.REPOSILITE_URL }}
+          REPOSILITE_USERNAME: ${{ secrets.REPOSILITE_USERNAME }}
+          REPOSILITE_PASSWORD: ${{ secrets.REPOSILITE_PASSWORD }}
 
       - name: Publish APIs
         run: ./gradlew publish --stacktrace
