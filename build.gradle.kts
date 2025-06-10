@@ -62,9 +62,23 @@ repositories {
         url = uri("https://maven.rhm176.de/releases")
         name = "RHM's Maven (Release)"
     }
-    maven {
-        url = uri("https://maven.rhm176.de/private")
-        name = "RHM's Maven (Private)"
+
+    if (System.getenv("CI") == "true") {
+        repositories {
+            maven {
+                name = "RHM's Maven (Private)"
+                url = uri("https://maven.rhm176.de/private")
+
+                credentials(PasswordCredentials::class.java) {
+                    username = System.getenv("REPOSILITE_USERNAME") ?: project.findProperty("reposiliteUsername") as String?
+                    password = System.getenv("REPOSILITE_PASSWORD") ?: project.findProperty("reposilitePassword") as String?
+                }
+
+                authentication {
+                    create<BasicAuthentication>("basic")
+                }
+            }
+        }
     }
 }
 
