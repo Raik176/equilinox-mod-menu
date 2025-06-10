@@ -60,7 +60,11 @@ silk {
 repositories {
     maven {
         url = uri("https://maven.rhm176.de/releases")
-        name = "RHM's Maven"
+        name = "RHM's Maven (Release)"
+    }
+    maven {
+        url = uri("https://maven.rhm176.de/private")
+        name = "RHM's Maven (Private)"
     }
 }
 
