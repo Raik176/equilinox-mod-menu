@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "de.rhm176.modmenu.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "GameMenuGuiAccessor",
+    "GuiPanelAccessor",
+    "MenuPanelGuiMixin",
+    "SecondPanelUiMixin",
+    "TextureManagerAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

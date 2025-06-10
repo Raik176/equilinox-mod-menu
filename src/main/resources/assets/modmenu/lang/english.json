@@ -1,0 +1,65 @@
+{
+  "modmenu.button.mods": "Mods",
+
+  "modmenu.badge.library": "Library",
+  "modmenu.badge.deprecated": "Deprecated",
+  "modmenu.badge.equilinox": "Equilinox",
+  "modmenu.badge.update": "Update",
+
+  "modmenu.config.sortingOrder": "Sorting Order:",
+  "modmenu.config.sortingOrder.a_z": "A-Z",
+  "modmenu.config.sortingOrder.z_a": "Z-A",
+  "modmenu.config.sortingOrder.update_available": "Update Available",
+  "modmenu.config.updateCheckerEnabled": "Enable Update checker",
+
+  "modmenu.update.available": "Update Available:",
+  "modmenu.update.version": "New Version: %s (%s)",
+  "modmenu.update.channel.release": "Release",
+  "modmenu.update.channel.alpha": "Alpha",
+  "modmenu.update.channel.beta": "Beta",
+  "modmenu.update.download": "Download",
+
+  "modmenu.author": "By %s",
+  "modmenu.links": "Links:",
+  "modmenu.licenses": "Licenses:",
+
+  "modmenu.website": "Website",
+  "modmenu.issues": "Issue tracker",
+  "modmenu.credits": "Credits:",
+  "modmenu.sources": "Sources",
+  "modmenu.buymeacoffee": "Buy Me a Coffee",
+  "modmenu.coindrop": "Coindrop",
+  "modmenu.crowdin": "Crowdin",
+  "modmenu.discord": "Discord",
+  "modmenu.donate": "Donate",
+  "modmenu.flattr": "Flattr",
+  "modmenu.github_releases": "GitHub Releases",
+  "modmenu.github_sponsors": "GitHub Sponsors",
+  "modmenu.kofi": "Ko-fi",
+  "modmenu.liberapay": "Liberapay",
+  "modmenu.mastodon": "Mastodon",
+  "modmenu.opencollective": "Open Collective",
+  "modmenu.patreon": "Patreon",
+  "modmenu.paypal": "PayPal",
+  "modmenu.reddit": "Reddit",
+  "modmenu.twitch": "Twitch",
+  "modmenu.twitter": "X (Twitter)",
+  "modmenu.wiki": "Wiki",
+  "modmenu.youtube": "YouTube",
+
+  "modmenu.credits": "Credits:",
+
+  "modmenu.credits.role.author": "Authors",
+  "modmenu.credits.role.contributor": "Contributors",
+  "modmenu.credits.role.translator": "Translators",
+  "modmenu.credits.role.maintainer": "Maintainers",
+  "modmenu.credits.role.playtester": "Playtesters",
+  "modmenu.credits.role.illustrator": "Illustrators",
+  "modmenu.credits.role.owner": "Owners",
+
+  "modmenu.modsFolder": "Open Mods Folder",
+  "modmenu.configFolder": "Open Config Folder",
+
+  "modmenu.error.directory": "Failed to open the '%s' directory.",
+  "modmenu.error.link": "Failed to open website."
+}
